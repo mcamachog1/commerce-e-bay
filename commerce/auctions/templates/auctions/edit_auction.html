@@ -1,0 +1,48 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+
+
+    {% if user.is_authenticated %}
+    <h2>Edit Auction</h2>
+
+    <form action="{% url 'edit_auction' listing.id %}" method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            {% if listing.active %}
+            <input autofocus class="form-control" type="checkbox" name="active" checked>
+            {% else %}
+            <input autofocus class="form-control" type="checkbox" name="active">
+            {% endif %}
+        </div>
+        <div class="form-group">
+            <label for="cars">Category:</label>
+            <select name="categories" id="categories">
+            {% for category in categories %}
+                {% if category.id == article.category.id %}
+                <option selected value="{{ category.id }}">{{ category.name }}</option>
+                {% else %}
+                <option value="{{ category.id }}">{{ category.name }}</option>
+                {% endif %}
+            {% endfor %}
+            </select>
+        </div>
+        <div class="form-group">
+            <input autofocus class="form-control" type="text" name="title" placeholder="Title" value="{{ listing.title }}">
+        </div>
+        <div class="form-group">
+            <textarea class="form-control" name="description" placeholder="Description" >{{ listing.description }}</textarea>
+        </div>
+        <div class="form-group">
+            <input class="form-control" type="number" min="0" step="0.01" name="starting_bid" placeholder="Starting Bid" value={{ listing.price }}>
+        </div>
+        <div class="form-group">
+            <input class="form-control" type="url" name="image" placeholder="URL Image" value={{ listing.url_image }}>
+        </div>
+        <input type="hidden" name="userid" value="{{ user.id }}" >
+        <input class="btn btn-primary" type="submit" value="Save">
+    </form>
+    {% else %}
+    {% endif %}
+
+{% endblock %}

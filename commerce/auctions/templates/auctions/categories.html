@@ -1,0 +1,21 @@
+{% extends "auctions/layout.html" %}
+
+{% load static %}
+
+{% block body %}
+
+{% if user.is_authenticated %}
+
+<ul class="sinbullets">
+    {% for category in categories %}
+    <div class="dscstyle">
+        <li><a href="{% url 'category' category.id %}">{{category.name}}</a></li>
+        <li>{{ category.description }}</li><br>
+    </div>
+    {% endfor %}
+</ul>
+    
+
+{% endif %}
+
+{% endblock %}

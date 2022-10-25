@@ -1,0 +1,45 @@
+body {
+    padding: 10px;
+}
+
+.imgstyle {
+	margin-left: 22%;
+    width: 100px;
+
+}
+
+.imgdetail {
+    height: 150px;
+    width: 150px;
+    margin-top: 10px;
+    object-fit: contain;
+}
+
+.sinbullets {
+    list-style-type: none;
+}
+
+.tablestyle {
+    border: 1px solid  rgba(114, 114, 114, 0.969);
+    width: 100%;
+    
+}
+
+td {
+    height: 150px;
+}
+
+
+.smallfont {
+    font-size: small;
+}
+
+.bigfont {
+    font-size:x-large;
+    font-weight: bold;
+}
+
+
+.bidbutton {
+    margin-top: 15px;
+}
